@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.map {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+
+.tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background-color: white;
+    border: solid 1px cornflowerblue;
+}
+
+h1{
+    text-align: center;
+    margin: 10% 0 20px 0;
+}
