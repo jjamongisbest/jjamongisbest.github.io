@@ -43,6 +43,11 @@
 
 }
 
+.tile:hover{
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
 h1{
     text-align: center;
     margin: 10% 0 20px 0;
