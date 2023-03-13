@@ -17,6 +17,7 @@ searchBox.addEventListener("submit", (e) => {
     e.preventDefault(); // 기본동작 방지
     if(query !== ""){
         page = 1;
+        container.innerHTML = ""; // 검색 결과 이전 내용 초기화
         searchRequest(query.value, page);
     }
 });
@@ -34,7 +35,7 @@ function searchRequest(query, page) {
     }).done(function (response) {
         console.log(response);
     const container = document.querySelector("#container");
-    container.innerHTML = ""; // 검색 결과 이전 내용 초기화
+    
     response.documents.forEach((book) => {
     const title = book.title;
     const price = book.price;
@@ -49,8 +50,10 @@ function searchRequest(query, page) {
       // 책 썸네일 이미지 추가
     const bookImg = document.createElement("img");
     bookImg.className = "book-img";
-    bookImg.src = thumbnail;
-    card.appendChild(bookImg);
+    if(thumbnail != ""){
+        bookImg.src = thumbnail;
+        card.appendChild(bookImg);
+    }
 
       // 책 제목 추가
     const bookTitle = document.createElement("h4");
@@ -72,6 +75,10 @@ function searchRequest(query, page) {
 
       container.appendChild(card); // 검색 결과 카드 추가
     });
+
+    if(response.meta.is_end === false) {
+        searchRequest(query, ++ page);
+    }
     });
         // container 안에 
 
