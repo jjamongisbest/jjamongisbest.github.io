@@ -3,13 +3,32 @@
     padding: 0;
 }
 
+/* #gameContainer {
+    position: relative;
+} */
+
 .map {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
     height: 500px;
     margin: auto;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
 }
+
+/* .black-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.white-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+} */
 
 .tile {
     display: flex;
@@ -21,9 +40,16 @@
 
     background-color: white;
     border: solid 1px cornflowerblue;
+
 }
 
 h1{
     text-align: center;
     margin: 10% 0 20px 0;
+}
+
+#btn-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
 }
