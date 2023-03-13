@@ -33,10 +33,46 @@ function searchRequest(query, page) {
         },
     }).done(function (response) {
         console.log(response);
+    const container = document.querySelector("#container");
+    container.innerHTML = ""; // 검색 결과 이전 내용 초기화
+    response.documents.forEach((book) => {
+    const title = book.title;
+    const price = book.price;
+    const publisher = book.publisher;
+    const author = book.authors[0]; // 저자가 여러명일 경우 첫번째 저자만 사용
+    const thumbnail = book.thumbnail;
 
-        const container = document.querySelector(".container");
-        
+      // 검색 결과를 표시할 카드 생성
+    const card = document.createElement("div");
+    card.className = "result-card";
 
+      // 책 썸네일 이미지 추가
+    const bookImg = document.createElement("img");
+    bookImg.className = "book-img";
+    bookImg.src = thumbnail;
+    card.appendChild(bookImg);
+
+      // 책 제목 추가
+    const bookTitle = document.createElement("h4");
+    bookTitle.className = "book-title";
+    bookTitle.textContent = title;
+    card.appendChild(bookTitle);
+
+      // 책 상세 정보 추가
+    const bookDescription = document.createElement("p");
+    bookDescription.className = "book-description";
+    bookDescription.textContent = `${author} | ${publisher}`;
+    card.appendChild(bookDescription);
+
+      // 책 가격 추가
+    const bookPrice = document.createElement("span");
+    bookPrice.className = "book-price";
+    bookPrice.textContent = price.toLocaleString() + "원";
+    card.appendChild(bookPrice);
+
+      container.appendChild(card); // 검색 결과 카드 추가
+    });
+    });
         // container 안에 
 
         /*<div class="result-card">
@@ -50,7 +86,6 @@ function searchRequest(query, page) {
         </div>*/
 
         // 새로 생성 및 구성 완료한 result-card 요소를 추가
-    });
 }
 
 

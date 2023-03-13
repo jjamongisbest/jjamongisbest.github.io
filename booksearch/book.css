@@ -22,7 +22,7 @@ h1 {
     background-color: blanchedalmond;
 }
 
-.container {
+#container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
