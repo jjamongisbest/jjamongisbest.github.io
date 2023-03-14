@@ -1,31 +1,31 @@
 const gameContainer = document.getElementById("gameContainer");
-const grid = document.getElementById("grid");
+// const grid = document.getElementById("grid");
 
 const map = document.createElement("div");
 map.className = "map";
 
-const setGrid = document.createElement("div");
-grid.id = "setGrid";
+// const setGrid = document.createElement("div");
+// grid.id = "setGrid";
 
 let winner = 0;
 let turn = 1;
 const size = 10;
 
-setGrid();
-function setGrid() {
-  for (let i = 0; i < size; i++) {
-    for (let k = 0; k < size; k++) {
-      const box = document.createElement("div");
+// setGrid();
+// function setGrid() {
+//   for (let i = 0; i < size; i++) {
+//     for (let k = 0; k < size; k++) {
+//       const box = document.createElement("div");
 
-      const id = `y${i}x${k}`;
-      box.id = id;
-      box.className = "tile";
+//       const id = `y${i}x${k}`;
+//       box.id = id;
+//       box.className = "tile";
 
-      setGrid.append(box);
-    }
-  }
-  grid.append(setGrid);
-}
+//       setGrid.append(box);
+//     }
+//   }
+//   grid.append(setGrid);
+// }
 
 setMap();
 
@@ -46,26 +46,29 @@ function setMap() {
 
       map.append(tile);
 
-      tile.addEventListener("click", (e) => {
-        console.log(id);
 
-        const target = e.target;
-
-        if (target.innerText) {
-          alert("이미 선택 된 것이다!!!!!!!!!");
-          return;
-        }
-
-        tile.innerText = turn == 1 ? "⚫️" : "⚪️";
-
-        checkWinner();
-
-        if (winner !== 0) {
-          alert(`winner: ${winner}`);
-        }
-
-        turn = turn === 1 ? 2 : 1;
-      });
+      if(winner === 0){
+        tile.addEventListener("click", (e) => {
+          console.log(id);
+  
+          const target = e.target;
+  
+          if (target.innerText) {
+            alert("이미 선택 된 것이다!!!!!!!!!");
+            return;
+          }
+  
+          tile.innerText = turn == 1 ? "⚫️" : "⚪️";
+  
+          checkWinner();
+  
+          if (winner !== 0) {
+            alert(`winner: ${winner}`);
+          }
+  
+          turn = turn === 1 ? 2 : 1;
+        });
+      }
     }
   }
 
